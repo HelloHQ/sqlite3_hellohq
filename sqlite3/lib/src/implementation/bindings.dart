@@ -9,6 +9,7 @@ import 'package:meta/meta.dart';
 
 import '../functions.dart';
 import '../vfs.dart';
+import 'dart:ffi';
 
 /// A `sqlite3_changeset_iter` instance.
 ///
@@ -192,6 +193,8 @@ typedef RawCollation = int Function(String? a, String? b);
 /// when [sqlite3_close_v2] is not called explicitly.
 abstract interface class RawSqliteDatabase {
   int sqlite3_changes();
+  int enableExtension(int value);
+  int loadExtension(Pointer<Char> extensionPath,Pointer<Char> entryData);
   int sqlite3_last_insert_rowid();
 
   int sqlite3_exec(String sql);

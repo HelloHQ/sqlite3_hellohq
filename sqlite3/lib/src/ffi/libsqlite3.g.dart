@@ -881,6 +881,24 @@ external int sqlite3session_diff(
   ffi.Pointer<ffi.Pointer<sqlite3_char>> pzErrMsg,
 );
 
+@ffi.Native<
+  ffi.Int Function(
+    ffi.Pointer<sqlite3>,
+    ffi.Pointer<ffi.Char>,
+    ffi.Pointer<ffi.Char>,
+    ffi.Pointer<ffi.Pointer<ffi.Char>>,
+  )
+>()
+external int sqlite3_load_extension(
+  ffi.Pointer<sqlite3> db,
+  ffi.Pointer<ffi.Char> zFile,
+  ffi.Pointer<ffi.Char> zProc,
+  ffi.Pointer<ffi.Pointer<ffi.Char>> pzErrMsg,
+);
+
+@ffi.Native<ffi.Int Function(ffi.Pointer<sqlite3>, ffi.Int)>()
+external int sqlite3_enable_load_extension(ffi.Pointer<sqlite3> db, int onoff);
+
 const addresses = _SymbolAddresses();
 
 class _SymbolAddresses {

@@ -2,7 +2,7 @@ import 'functions.dart';
 import 'result_set.dart';
 import 'statement.dart';
 import 'constants.dart';
-
+import 'dart:ffi';
 /// An opened sqlite3 database.
 ///
 /// {@category common}
@@ -35,6 +35,11 @@ abstract class CommonDatabase {
   /// statement.
   @Deprecated('Use updatedRows instead')
   int getUpdatedRows();
+
+
+  int enableExtension(int value);
+
+  int loadExtension(Pointer<Char> extensionPath,Pointer<Char> entryData);
 
   /// An async stream of data changes happening on this database.
   ///

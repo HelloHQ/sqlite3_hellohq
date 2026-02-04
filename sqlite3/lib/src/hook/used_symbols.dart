@@ -95,4 +95,6 @@ const usedSqliteSymbols = {
   'sqlite3session_isempty',
   'sqlite3session_attach',
   'sqlite3session_diff',
+  'sqlite3_load_extension',
+  'sqlite3_enable_load_extension',
 };

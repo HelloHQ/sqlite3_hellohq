@@ -293,3 +293,15 @@ int sqlite3session_attach(sqlite3_session* pSession, /* Session object */
 );
 int sqlite3session_diff(sqlite3_session* pSession, const sqlite3_char* zFromDb,
                         const sqlite3_char* zTbl, sqlite3_char** pzErrMsg);
+                        
+int sqlite3_load_extension(
+  sqlite3 *db,          
+  const char *zFile,    
+  const char *zProc,    
+  char **pzErrMsg
+);           
+
+int sqlite3_enable_load_extension(sqlite3 *db, int onoff);
+
+
+

@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:collection';
 import 'dart:convert';
 import 'dart:typed_data';
-
+import 'dart:ffi';
 import 'package:meta/meta.dart';
 
 import '../constants.dart';
@@ -489,6 +489,16 @@ base class DatabaseImplementation implements CommonDatabase {
   set commitFilter(VoidPredicate? commitFilter) {
     _commitHandler().syncCallback = commitFilter;
   }
+
+ @override
+  int loadExtension(Pointer<Char> extensionPath, Pointer<Char> entryData) {
+    return database.loadExtension(extensionPath, entryData);
+  }
+
+  @override
+  int enableExtension(int value) {
+    return database.enableExtension(value);
+  }
 }
 
 extension on RawSqliteContext {
@@ -654,6 +664,7 @@ final class _StreamHandlers<T, SyncCallback> {
       addListener();
     }, isBroadcast: true);
   }
+
 
   bool get hasListener => _asyncListeners.isNotEmpty || _syncCallback != null;
 
