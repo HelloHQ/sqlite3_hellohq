@@ -1,11 +1,10 @@
 name: CI
 
 on:
-  workflow_dispatch:  # CI-PAUSE 2026-10-13: no trigger left
-  # CI-PAUSE 2026-10-13: push:
-  # CI-PAUSE 2026-10-13:   branches: ['**']
-  # CI-PAUSE 2026-10-13: # CI-PAUSE 2026-10-13: pull_request:
-  # CI-PAUSE 2026-10-13: # CI-PAUSE 2026-10-13:   branches: [ main ]
+  push:
+    branches: ['**']
+  pull_request:
+    branches: [ main ]
 
 jobs:
   fetch_sqlite:
